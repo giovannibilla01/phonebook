@@ -95,5 +95,9 @@
 /* CREATE */
 #create-form, #edit-form {
     max-width: 500px;
-    margin: 0;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin: 8px 0px;
 }

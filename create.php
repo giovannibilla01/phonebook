@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="observation">Observações:</label>
-            <textarea type="text" class="form-control" name="observation" id="observation" placeholder="Digite Observação sobre o Contato" rows="3">
+            <textarea type="text" class="form-control" name="observation" id="observation" rows="3">
             </textarea>
         </div>
         <div class="form-group">
