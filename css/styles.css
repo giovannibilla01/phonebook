@@ -1,3 +1,94 @@
 .navbar-brand img {
     height: 45px;
 }
+
+#main-title {
+    text-align: center;
+    margin: 15px 0 30px;
+}
+
+/* HOME */
+#contacts-table {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#contacts-table thead {
+    color: #FFF;
+    background-color: #007BFF;
+}
+
+.actions {
+    text-align: right;
+    width: 150px;
+}
+
+.actions i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.check-icon {
+    color: #1e1e7e;
+}
+
+.edit-icon {
+    color: #1e1e7e;
+}
+
+#contacts-table button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.delete-icon {
+    color: #7e1e1e;
+}
+
+#empty-list-text {
+    text-align: center;
+}
+
+#msg {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* SHOW PAGE */
+#view-contact-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#back-link-container {
+    display: block;
+    width: 500px;
+    margin: 30px auto 0;
+}
+
+#back-link {
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 5px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#back-link:hover {
+    font-style: italic;
+    background-color: #007BFF;
+    border: 1px solid #fff;
+    color: #fff;
+
+}
