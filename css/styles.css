@@ -90,5 +90,10 @@
     background-color: #007BFF;
     border: 1px solid #fff;
     color: #fff;
+}
 
+/* CREATE */
+#create-form, #edit-form {
+    max-width: 500px;
+    margin: 0;
 }
