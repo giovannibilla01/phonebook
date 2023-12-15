@@ -13,7 +13,7 @@
     margin: 0 auto;
 }
 
-#contacts-table thead {
+#contacts-table thead tr th {
     color: #FFF;
     background-color: #007BFF;
 }
@@ -44,6 +44,10 @@
 
 .delete-icon {
     color: #7e1e1e;
+}
+
+.delete-form {
+    display: inline-block;
 }
 
 #empty-list-text {
@@ -100,4 +104,11 @@
 
 .form-group {
     margin: 8px 0px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    #home-link {
+        display: none;
+    }
 }

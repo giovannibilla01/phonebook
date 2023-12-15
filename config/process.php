@@ -4,29 +4,108 @@
     include_once("connection.php");
     include_once("url.php");
 
+    $data = $_POST ?? null;
     $id = $_GET['id'] ?? null;
 
-    if (!empty($id)) {
-        // RETURN A CONTACT
-        $query = "SELECT * FROM contacts WHERE id = :id";
+    if (!empty($data)) {
+        // DATA MODIFICATION
+        switch ($data['type']) {
+            case 'create':
+                $name = $data['name'];
+                $phone = $data['phone'];
+                $observations = $data['observations'];
 
-        $stmt = $connection->prepare($query);
+                $query = "INSERT INTO contacts (name, phone, observations) VALUES (:name, :phone, :observations)";
 
-        $stmt->bindParam(":id", $id);
+                $stmt = $connection->prepare($query);
 
-        $stmt->execute();
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":phone", $phone);
+                $stmt->bindParam(":observations", $observations);
 
-        $contact = $stmt->fetch();
+                try {
+                    $stmt->execute();
+                    $_SESSION['msg'] = "Contato criado com sucesso!";
+                } catch (PDOException $e) {
+                    $error = $e->getMessage();
+                    echo "Erro: $error";
+                }
+                break;
+            case 'edit':
+                $id = $data['id'];
+                $name = $data['name'];
+                $phone = $data['phone'];
+                $observations = $data['observations'];
+
+                $query = "UPDATE contacts SET name = :name, phone = :phone, observations = :observations WHERE id = :id";
+
+                $stmt = $connection->prepare($query);
+
+                $stmt->bindParam(":id", $id);
+                $stmt->bindParam(":name", $name);
+                $stmt->bindParam(":phone", $phone);
+                $stmt->bindParam(":observations", $observations);
+
+                try {
+                    $stmt->execute();
+                    $_SESSION['msg'] = "Contato atualizado com sucesso!";
+                } catch (PDOException $e) {
+                    $error = $e->getMessage();
+                    echo "Erro: $error";
+                }
+                break;
+            case 'delete':
+                $id = $data['id'];
+
+                $query = "DELETE FROM contacts WHERE id = :id";
+
+                $stmt = $connection->prepare($query);
+
+                $stmt->bindParam(":id", $id);
+
+                try {
+                    $stmt->execute();
+                    $_SESSION['msg'] = "Contato deletado com sucesso!";
+                } catch (PDOException $e) {
+                    $error = $e->getMessage();
+                    echo "Erro: $error";
+                }
+                break;
+        }
+        if ($data['type'] == "create") {
+            
+
+        } elseif ($data['type'] == "edit") {
+            
+        }
+
+        header("Location:" . $BASE_URL . "../index.php");
     } else {
-        // RETURN ALL CONTACTS
-        $contacts = [];
+        // DATA SELECT
+        if (!empty($id)) {
+            // RETURN A CONTACT
+            $query = "SELECT * FROM contacts WHERE id = :id";
 
-        $query = "SELECT * FROM contacts";
+            $stmt = $connection->prepare($query);
 
-        $stmt = $connection->prepare($query);
+            $stmt->bindParam(":id", $id);
 
-        $stmt->execute();
+            $stmt->execute();
 
-        $contacts = $stmt->fetchAll();
+            $contact = $stmt->fetch();
+        } else {
+            // RETURN ALL CONTACTS
+            $contacts = [];
+
+            $query = "SELECT * FROM contacts";
+
+            $stmt = $connection->prepare($query);
+
+            $stmt->execute();
+
+            $contacts = $stmt->fetchAll();
+        }
     }
+
+    $connection = null;
 ?>
