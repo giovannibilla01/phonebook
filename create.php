@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="phone">Telefone do Contato:</label>
-            <input type="text" class="form-control" name="phone" id="phone" placeholder="Digite o Telefone do Contato" required>
+            <input type="text" class="form-control" name="phone" id="phone" placeholder="Digite o Telefone do Contato" maxlength="11" required>
         </div>
         <div class="form-group">
             <label for="observations">Observações:</label>
